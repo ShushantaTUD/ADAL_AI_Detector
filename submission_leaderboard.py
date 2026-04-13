@@ -6,8 +6,8 @@ from raid import run_detection
 from raid.utils import load_data
 
 # ── Config ────────────────────────────────────────────────────────────────────
-MODEL_NAME = "Shushant/ADAL_AI_Detector"   # Hugging Face model
-OUTPUT_FILE = "predictions.json"
+MODEL_NAME = "Shushant/ADAL-detector-large"   # Hugging Face model
+OUTPUT_FILE = "final_predictions.json"
 BATCH_SIZE  = 32
 DEVICE      = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

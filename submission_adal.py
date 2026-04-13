@@ -6,8 +6,8 @@ from raid import run_detection
 from raid.utils import load_data
 
 # ── Config ────────────────────────────────────────────────────────────────────
-MODEL_DIR   = "/home/shushanta/target_mining_deberta/adal/best_detector"
-OUTPUT_FILE = "/home/shushanta/target_mining_deberta/adal/predictions.json"
+MODEL_DIR   = "/home/shushanta/ADAL_AI_Detector/adal/best_detector"
+OUTPUT_FILE = "/home/shushanta/ADAL_AI_Detector/adal/final_predictions.json"
 BATCH_SIZE  = 32
 DEVICE      = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

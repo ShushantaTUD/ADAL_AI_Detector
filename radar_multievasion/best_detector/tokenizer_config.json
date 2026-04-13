@@ -1,16 +1,3 @@
-{
-  "add_prefix_space": false,
-  "backend": "tokenizers",
-  "bos_token": "<s>",
-  "cls_token": "<s>",
-  "eos_token": "</s>",
-  "errors": "replace",
-  "is_local": false,
-  "mask_token": "<mask>",
-  "model_max_length": 512,
-  "pad_token": "<pad>",
-  "sep_token": "</s>",
-  "tokenizer_class": "RobertaTokenizer",
-  "trim_offsets": true,
-  "unk_token": "<unk>"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4903bcd294e8ff8b840eb9c21909d2f910b466d250ac6e298a7438a7da63ef0d
+size 359
