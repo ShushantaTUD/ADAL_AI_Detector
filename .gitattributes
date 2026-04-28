@@ -2,3 +2,12 @@
 *.log filter=lfs diff=lfs merge=lfs -text
 *.json filter=lfs diff=lfs merge=lfs -text
 *.jsonl filter=lfs diff=lfs merge=lfs -text
+*.model.safetensors filter=lfs diff=lfs merge=lfs -text
+ADAL_v3_raid.log filter=lfs diff=lfs merge=lfs -text
+training_ADAL.log filter=lfs diff=lfs merge=lfs -text
+training.log filter=lfs diff=lfs merge=lfs -text
+ADAL.log filter=lfs diff=lfs merge=lfs -text
+ADAL_PANCLEF.log filter=lfs diff=lfs merge=lfs -text
+ADAL_second_version.log filter=lfs diff=lfs merge=lfs -text
+ADAL_V3.log filter=lfs diff=lfs merge=lfs -text
+ADALv3panclef.log filter=lfs diff=lfs merge=lfs -text
