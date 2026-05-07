@@ -89,7 +89,7 @@ from transformers import (
 )
 from transformers import LogitsProcessor, LogitsProcessorList
 from raid.utils import load_data as raid_load_data   # official RAID train/test splits
-
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 class NanSafeLogitsProcessor(LogitsProcessor):
     """Intercept logits before torch.multinomial — replace NaN/inf so sampling never crashes."""
@@ -139,7 +139,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # explosion in warmstart (MLE→NaN on step 2) which then poisons generate() logits.
 PARAPHRASER_MODEL_NAME   = "ramsrigouthamg/t5_paraphraser"
 PARAPHRASER_LOAD_IN_8BIT = False  # not needed — model is only ~900 MB
-DETECTOR_MODEL_NAME    = "roberta-large"
+DETECTOR_MODEL_NAME    = "microsoft/deberta-v3-large"
 
 # ── RAID dataset ──────────────────────────────────────────────────────────────
 # Install:  pip install raid-bench
@@ -387,7 +387,7 @@ ATTACK_AUROC_LOG      = os.path.join(OUTPUT_DIR, "per_attack_auroc.tsv")
 
 # ── HuggingFace Hub — push trained models here ────────────────────────────────
 # Get your token from: https://huggingface.co/settings/tokens (write access needed)
-HF_TOKEN              = "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"        # ← paste your HF write token
+HF_TOKEN              = "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"        # ← paste your HF write token
 HF_USERNAME           = "Shushanta"   # ← MUST match exactly: huggingface.co/settings/profile
                                               #   The 403 error means this is wrong or the org
                                               #   namespace does not exist. Use your personal handle.
@@ -1458,15 +1458,17 @@ class Detector(nn.Module):
     def __init__(self):
         super().__init__()
         logger.info(f"Loading detector '{DETECTOR_MODEL_NAME}' …")
-        self.tokenizer = RobertaTokenizer.from_pretrained(DETECTOR_MODEL_NAME)
-        self.model     = RobertaForSequenceClassification.from_pretrained(
-            DETECTOR_MODEL_NAME, num_labels=2,
-        )
+        # self.tokenizer = RobertaTokenizer.from_pretrained(DETECTOR_MODEL_NAME)
+        # self.model     = RobertaForSequenceClassification.from_pretrained(
+        #     DETECTOR_MODEL_NAME, num_labels=2,
+        # )
+        self.tokenizer = AutoTokenizer.from_pretrained(DETECTOR_MODEL_NAME)
+        self.model = AutoModelForSequenceClassification.from_pretrained(DETECTOR_MODEL_NAME)
         self.model.to(DEVICE)
 
     def forward(self, input_ids: torch.Tensor, attention_mask: torch.Tensor) -> torch.Tensor:
         return torch.softmax(
-            self.model(input_ids=input_ids, attention_mask=attention_mask).logits,
+            self.model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=None).logits,
             dim=-1,
         )[:, 1]   # P(human)
 

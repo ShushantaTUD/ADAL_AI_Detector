@@ -1,0 +1,50 @@
+════════════════════════════════════════════════════════════════════════
+  RAW scores (no calibration)
+════════════════════════════════════════════════════════════════════════
+  roc-auc       0.9975
+  brier         0.9732
+  c@1           0.9824
+  f1            0.9863
+  f05u          0.9875
+  mean          0.9854
+
+  Confusion matrix (threshold = 0.5):
+                 Predicted: HUMAN   Predicted: AI
+    Actual: HUMAN          1250             27    ← FP matters for academic use
+    Actual: AI               36           2276
+
+  Accuracy                 0.9824
+  TPR (sensitivity / recall) 0.9844
+  TNR (specificity)          0.9789
+  FPR (false positive rate)  0.0211   ← lower is better
+  FNR (false negative rate)  0.0156
+
+  Per-source breakdown:
+    source                                 n  mean P(AI)   correct@0.5
+    deepseek-r1-distill-qwen-32b         106      0.8633     106 / 106 
+    falcon3-10b-instruct                 113      0.8602     113 / 113 
+    gemini-1.5-pro                       145      0.8051     136 / 145 
+    gemini-2.0-flash                     139      0.8567     139 / 139 
+    gemini-pro                            59      0.7965      57 / 59  
+    gemini-pro-paraphrase                 70      0.7901      65 / 70  
+    gpt-3.5-turbo                        200      0.8624     200 / 200 
+    gpt-4-turbo                           63      0.8704      63 / 63  
+    gpt-4-turbo-paraphrase                59      0.8119      56 / 59  
+    gpt-4.5-preview                       45      0.8624      45 / 45  
+    gpt-4o                               209      0.8681     209 / 209 
+    gpt-4o-mini                          214      0.8659     214 / 214 
+    human                               1277      0.0704    1250 / 1277
+    llama-2-70b-chat                      65      0.8420      65 / 65  
+    llama-2-7b-chat                       72      0.8240      71 / 72  
+    llama-3.1-8b-instruct                158      0.8110     150 / 158 
+    llama-3.3-70b-instruct                54      0.8525      53 / 54  
+    ministral-8b-instruct-2410           139      0.8633     139 / 139 
+    mistral-7b-instruct-v0.2              68      0.8160      67 / 68  
+    mixtral-8x7b-instruct-v0.1            70      0.7820      64 / 70  
+    o3-mini                              132      0.8615     132 / 132 
+    qwen1.5-72b-chat-8bit                 63      0.8692      63 / 63  
+    text-bison-002                        69      0.8566      69 / 69  
+
+
+  ✓ Results written to ./evaluation_results_adal_v3_panclef.json
+════════════════════════════════════════════════════════════════════════
