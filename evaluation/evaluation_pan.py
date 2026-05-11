@@ -55,7 +55,7 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 # ═══════════════════════════════════════════════════════════════════════════
 CONFIG = {
     # HuggingFace repo id OR local path to detector checkpoint
-    "MODEL_PATH":       "/home/shushanta/ADAL_AI_Detector/adal_v5_panclef/best_detector",
+    "MODEL_PATH":       "/home/shushanta/ADAL_AI_Detector/adal_v5_panclef",
 
     # Path to val.jsonl with {text, label, model} fields
     "VAL_JSONL":        "/home/shushanta/ADAL_AI_Detector/val.jsonl",
@@ -65,7 +65,7 @@ CONFIG = {
     "MAX_LENGTH":       512,
 
     # Where to write the final metrics JSON
-    "OUTPUT_JSON":      "./evaluation_results_adal_v5_panclef.json",
+    "OUTPUT_JSON":      "./evaluation_results_adal_v4_panclef.json",
 
     # Device: "cuda", "cpu", or None to auto-detect
     "DEVICE":           None,
